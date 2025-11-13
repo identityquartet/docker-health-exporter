@@ -1,0 +1,12 @@
+services:
+  docker-health-exporter:
+    image: fviolence/docker-health-exporter:latest
+    container_name: docker-health-exporter
+    restart: unless-stopped
+    environment:
+      - PORT=9066
+      - SCRAPE_INTERVAL=10
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - "9066:9066"
